@@ -1,31 +1,26 @@
-// Assignment Code
-var numbers = ["1", "2", "3"];
-var numbers = ["1", "2", "3"];
-var numbers = ["1", "2", "3"];
-var numbers = ["1", "2", "3"];
+// A
 //creating a reference to a "generate button" in HTML with variable name generateBtn
 var generateBtn = document.querySelector("#generate");
 
-function generatePassword()
-console.log("meow");
-
+function generatePassword() {
+  console.log("Button Clicked")
+}
 // Write password to the #password input
 // function called "writePassword"
-function writePassword(); {
+function writePassword() {
   // creates variable "password" with function caled "generatepassword"
-  var password = generatePassword()
+  var password = generatePassword();
   // creates variable "passwordText" with function grabbing "id=password" in html
   var PasswordText = document.querySelector("#password");
   // setting calue to password
-  passwordText.value = Password;
+  passwordText.value = password;
 
 }
-
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+generateBtn.addEventListener("click" , writePassword);
 //Phase 1-creating variable and getting the info we need
 //what do we need to do?
-var availablechars = [];
+
 // must prompt use for length of word (8-128) (use prompt)
 //Confirm user for upper/lower/ case (yes no? USE CONFIRM)
 //Confirm user is theyd like to use special characters
