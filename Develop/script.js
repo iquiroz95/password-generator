@@ -1,27 +1,66 @@
 // A
 //creating a reference to a "generate button" in HTML with variable name generateBtn
-var generateBtn = document.querySelector("#generate");
+var userWantsUppercase = confirm("Do you want uppercase characters?");
+var userWantsLowercase = confirm("Do you want lower case characters?");
+var userWantsSpecialChars = confirm("Do you want special characters?");
+var userNumbers = confirm("Do you want numbers?");
+var userLength = prompt("How many characters?");
 
-function generatePassword() {
-  console.log("Button Clicked")
+while(userLength > 128)
+{
+  alert("Exceeded maximum characters");
+  userLength = prompt("How many characters?");
 }
+
+var generateBtn = document.querySelector("#generate");
 // Write password to the #password input
 // function called "writePassword"
-function writePassword() {
-  // creates variable "password" with function caled "generatepassword"
-  var password = generatePassword();
-  // creates variable "passwordText" with function grabbing "id=password" in html
-  var PasswordText = document.querySelector("#password");
-  // setting calue to password
-  passwordText.value = password;
+// creates variable "password" with function caled "generatepassword"
 
+var lowerCase = ["a","b","c","d","e","f","g","h","i","j","k","l","m","o","p","q","r","s","t","u","v","w","x","y","z"];
+var upperCase = ["A","B","C","D","E","F","G","H","I","J","K","L","M","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+var numbers = ["1","2","3","4","5","6","7","8","9","0"];
+var specialChars = ["!", "@", "*", "%", "#", "&"];
+
+function generatePassword() {
+  var usableCharacters = [];
+  if (userWantsUppercase)
+  {
+    usableCharacters = usableCharacters.concat(upperCase);
+    console.log(usableCharacters);
+  }
+  if (userWantsLowercase)
+  {
+    usableCharacters = usableCharacters.concat(lowerCase);
+    console.log(usableCharacters);
+  }
+  if (userWantsSpecialChars)
+  {
+    usableCharacters = usableCharacters.concat(specialChars);
+    console.log(usableCharacters);
+  }
+  if (userNumbers)
+  {
+    usableCharacters = usableCharacters.concat(numbers);
+    console.log(usableCharacters);
+  }
+
+  function getRandomNumber(max) {
+    return Math.floor(Math.random() * (max + 1));
+  }
+
+  var password = "";
+  for (var currentIndex = 0; currentIndex < userLength; currentIndex++)
+  {
+    var randomIndex = getRandomNumber(usableCharacters.length - 1);
+    var randomCharacter = usableCharacters[randomIndex];
+    password = password.concat(randomCharacter); 
+  }
+
+  document.getElementById("password").value = password;
+  return password;
 }
-// Add event listener to generate button
-generateBtn.addEventListener("click" , writePassword);
-//Phase 1-creating variable and getting the info we need
-//what do we need to do?
 
-// must prompt use for length of word (8-128) (use prompt)
 //Confirm user for upper/lower/ case (yes no? USE CONFIRM)
 //Confirm user is theyd like to use special characters
 //confirm user if theyd like to use numbers
